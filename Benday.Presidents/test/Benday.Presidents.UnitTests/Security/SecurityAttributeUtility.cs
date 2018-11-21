@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 
-namespace Benday.Presidents.UnitTests.Presentation
+namespace Benday.Presidents.UnitTests.Security
 {
     public static class SecurityAttributeUtility
     {
