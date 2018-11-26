@@ -12,7 +12,7 @@ namespace Benday.Presidents.WebUi.Security
         {
             ClaimsPrincipal principal = provider.GetUser();
 
-            _SecurityUtility = 
+            _SecurityUtility =
                 new SecurityUtility(principal.Identity, principal);
         }
         public bool IsAuthorizedForSearch
@@ -37,6 +37,24 @@ namespace Benday.Presidents.WebUi.Security
                 SecurityConstants.RoleName_Admin);
         }
 
-        public bool IsAuthorizedForImages => throw new System.NotImplementedException();
+        // public bool IsAuthorizedForImages => throw new System.NotImplementedException();
+
+        public bool IsAuthorizedForImages
+        {
+            get
+            {
+                if (IsAdministrator() == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return _SecurityUtility.HasClaim(
+                        SecurityConstants.Claim_SubscriptionType, 
+                        SecurityConstants.SubscriptionType_Ultimate);
+                }
+            }
+        }
+
     }
 }

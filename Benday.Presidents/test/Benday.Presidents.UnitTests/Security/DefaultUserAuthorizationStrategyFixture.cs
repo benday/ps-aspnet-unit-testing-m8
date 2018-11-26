@@ -84,5 +84,48 @@ namespace Benday.Presidents.UnitTests.Security
             Assert.IsTrue(SystemUnderTest.IsAuthorizedForSearch,
                 "Should be authorized for search.");
         }
+
+
+        [TestMethod]
+        public void IsAuthorizedForImages_ReturnsFalseForNoClaims()
+        {
+            Assert.IsFalse(SystemUnderTest.IsAuthorizedForImages,
+                "Should not be authorized for search.");
+        }
+
+        [TestMethod]
+        public void IsAuthorizedForImages_ReturnsTrueForAdministrator()
+        {
+            PrincipalProvider.AddClaim(
+                ClaimTypes.Role,
+                SecurityConstants.RoleName_Admin);
+
+            Assert.IsTrue(SystemUnderTest.IsAuthorizedForImages,
+                "Should be authorized for search.");
+        }
+
+        [TestMethod]
+        public void IsAuthorizedForImages_ReturnsFalseForBasicSubscription()
+        {
+            PrincipalProvider.AddClaim(
+                SecurityConstants.Claim_SubscriptionType,
+                SecurityConstants.SubscriptionType_Basic);
+
+            Assert.IsFalse(SystemUnderTest.IsAuthorizedForImages,
+                "Should not be authorized for search.");
+        }
+
+        [TestMethod]
+        public void IsAuthorizedForImages_ReturnsTrueForUltimateSubscription()
+        {
+
+            PrincipalProvider.AddClaim(
+                SecurityConstants.Claim_SubscriptionType,
+                SecurityConstants.SubscriptionType_Ultimate);
+
+            Assert.IsTrue(SystemUnderTest.IsAuthorizedForImages,
+                "Should be authorized for search.");
+        }
+
     }
 }
