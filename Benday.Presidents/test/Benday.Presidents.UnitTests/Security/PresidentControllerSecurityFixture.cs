@@ -33,5 +33,14 @@ namespace Benday.Presidents.UnitTests.Security
             );
         }
 
+        [TestMethod]
+        public void ControllerRequiresAdministratorRole()
+        {
+            SecurityAttributeUtility.AssertAuthorizeAttributeRolesOnClass(
+                SecurityConstants.RoleName_Admin, SystemUnderTest
+            );
+        }
+        
+
     }
 }

@@ -16,7 +16,7 @@ using Benday.Presidents.WebUi;
 namespace Benday.Presidents.WebUI.Controllers
 {
 
-    // [Authorize(Roles = SecurityConstants.RoleName_Admin)]
+    [Authorize(Roles = SecurityConstants.RoleName_Admin)]
     public class PresidentController : Controller
     {
         private const int ID_FOR_CREATE_NEW_PRESIDENT = 0;
