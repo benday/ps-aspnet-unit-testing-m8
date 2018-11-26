@@ -1,4 +1,4 @@
-﻿@*@inject Benday.Presidents.WebUi.Security.IUserAuthorizationStrategy _UserAuthorizationStrategy*@
+﻿@inject Benday.Presidents.WebUi.Security.IUserAuthorizationStrategy _UserAuthorizationStrategy
 @model Benday.Presidents.Api.Models.President
 
 @{
@@ -11,12 +11,12 @@
     <h4>President</h4>
     <hr />
 
-    @*@if (_UserAuthorizationStrategy.IsAuthorizedForImages == true)
+    @if (_UserAuthorizationStrategy.IsAuthorizedForImages == true)
     {
         <img src="~/Images/@Model.ImageFilename" />
-    }*@
+    }
 
-    <img src="~/Images/@Model.ImageFilename" />
+    @*<img src="~/Images/@Model.ImageFilename" />*@
 
 
     <dl class="dl-horizontal">

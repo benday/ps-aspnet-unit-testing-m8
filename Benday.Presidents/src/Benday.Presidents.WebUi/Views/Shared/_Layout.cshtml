@@ -1,4 +1,4 @@
-﻿@*@inject Benday.Presidents.WebUi.Security.IUserAuthorizationStrategy _UserAuthorizationStrategy*@
+﻿@inject Benday.Presidents.WebUi.Security.IUserAuthorizationStrategy _UserAuthorizationStrategy
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,13 +32,13 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="President" asp-action="Index">President</a></li>
-                    @*@if (_UserAuthorizationStrategy.IsAuthorizedForSearch == true)
+                    @if (_UserAuthorizationStrategy.IsAuthorizedForSearch == true)
                     {
                         <li><a asp-area="" asp-controller="Search" asp-action="Index">Search</a></li>
-                    }*@
-
-                    <li><a asp-area="" asp-controller="Search" asp-action="Index">Search</a></li>
-
+                    }
+                    
+                    @*<li><a asp-area="" asp-controller="Search" asp-action="Index">Search</a></li>*@
+                    
                     <li><a asp-area="" asp-controller="President" asp-action="ResetDatabase">Reset Database</a></li>
                     <li><a asp-area="" asp-controller="Feature" asp-action="Index">Features</a></li>
                     <li><a asp-area="" asp-controller="SecuritySummary" asp-action="Index">Claims Summary</a></li>
