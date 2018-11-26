@@ -40,7 +40,22 @@ namespace Benday.Presidents.UnitTests.Security
                 SecurityConstants.RoleName_Admin, SystemUnderTest
             );
         }
-        
+
+        [TestMethod]
+        public void IndexMethodAllowsAnonymous()
+        {
+            SecurityAttributeUtility.AssertAllowAnonymousAttributeOnMethod(
+                SystemUnderTest, "Index");
+        }
+
+        [TestMethod]
+        public void DetailsMethodAllowsAnonymous()
+        {
+            SecurityAttributeUtility.AssertAllowAnonymousAttributeOnMethod(
+                   SystemUnderTest, "Details", typeof(int));
+        }
+
+
 
     }
 }

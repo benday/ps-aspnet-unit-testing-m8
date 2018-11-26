@@ -42,7 +42,7 @@ namespace Benday.Presidents.WebUI.Controllers
             _TestDataUtility = testDataUtility;
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var presidents = _Service.GetPresidents();
@@ -50,7 +50,7 @@ namespace Benday.Presidents.WebUI.Controllers
             return View(presidents);
         }
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         [Route("/[controller]/[action]/{id}")]
         [Route("/president/{id}.aspx")]
         public ActionResult Details(int? id)
