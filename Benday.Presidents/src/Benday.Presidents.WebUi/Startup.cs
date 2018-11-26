@@ -99,7 +99,7 @@ namespace Benday.Presidents.WebUi
 
             app.UseAuthentication();
 
-            // app.UsePopulateSubscriptionClaimsMiddleware();
+            app.UsePopulateSubscriptionClaimsMiddleware();
 
             app.UseMvc(routes =>
             {
@@ -156,14 +156,12 @@ namespace Benday.Presidents.WebUi
 
             services.AddTransient<ITestDataUtility, TestDataUtility>();
 
-            /*
             services.AddTransient<PopulateSubscriptionClaimsMiddleware>();
 
             services.AddTransient<IUserAuthorizationStrategy, DefaultUserAuthorizationStrategy>();
 
             services.AddTransient<IUserClaimsPrincipalProvider, 
-                HttpContextUserClaimsPrincipalProvider>();
-            */
+                HttpContextUserClaimsPrincipalProvider>();            
         }
     }
 }
