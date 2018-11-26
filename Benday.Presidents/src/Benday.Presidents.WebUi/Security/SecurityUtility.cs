@@ -53,7 +53,7 @@ namespace Benday.Presidents.WebUi.Security
             }
         }
 
-        public bool IsAuthorized(string permissionName)
+        public bool IsAuthorized(string roleName)
         {
             if (_Identity == null)
             {
@@ -61,7 +61,7 @@ namespace Benday.Presidents.WebUi.Security
             }
             else
             {
-                return _Identity.HasClaim(ClaimTypes.Role, permissionName);
+                return _Identity.HasClaim(ClaimTypes.Role, roleName);
             }
         }
 

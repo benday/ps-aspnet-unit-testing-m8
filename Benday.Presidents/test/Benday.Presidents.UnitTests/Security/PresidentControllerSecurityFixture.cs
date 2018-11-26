@@ -17,6 +17,7 @@ namespace Benday.Presidents.UnitTests.Security
             }
         }
 
+/*
         [TestMethod]
         public void EditMethodRequiresAdministratorRole_Int32()
         {
@@ -30,6 +31,25 @@ namespace Benday.Presidents.UnitTests.Security
         {
             SecurityAttributeUtility.AssertAuthorizeAttributeRolesOnMethod(
                 SecurityConstants.RoleName_Admin, SystemUnderTest, "Edit", typeof(President)
+            );
+        }
+*/
+
+        [TestMethod]
+        public void EditMethodRequiresEditPresidentPolicy_Int32()
+        {
+            SecurityAttributeUtility.AssertAuthorizeAttributePolicyOnMethod(
+                SecurityConstants.PolicyName_EditPresident, 
+                SystemUnderTest, "Edit", typeof(int)
+            );
+        }
+
+        [TestMethod]
+        public void EditMethodRequiresEditPresidentPolicy_President()
+        {
+            SecurityAttributeUtility.AssertAuthorizeAttributePolicyOnMethod(
+                SecurityConstants.PolicyName_EditPresident, 
+                SystemUnderTest, "Edit", typeof(President)
             );
         }
 

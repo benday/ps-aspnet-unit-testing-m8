@@ -95,7 +95,8 @@ namespace Benday.Presidents.WebUI.Controllers
             return RedirectToAction("Edit", new { id = ID_FOR_CREATE_NEW_PRESIDENT });
         }
 
-        [Authorize(Roles = SecurityConstants.RoleName_Admin)]
+        // [Authorize(Roles = SecurityConstants.RoleName_Admin)]
+        [Authorize(Policy = SecurityConstants.PolicyName_EditPresident)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -128,7 +129,8 @@ namespace Benday.Presidents.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = SecurityConstants.RoleName_Admin)]
+        // [Authorize(Roles = SecurityConstants.RoleName_Admin)]
+        [Authorize(Policy = SecurityConstants.PolicyName_EditPresident)]
         public ActionResult Edit(President president)
         {
             if (_Validator.IsValid(president) == true)
