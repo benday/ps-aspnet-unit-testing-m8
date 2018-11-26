@@ -68,7 +68,7 @@ namespace Benday.Presidents.WebUi
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            /*
+            
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(SecurityConstants.PolicyName_EditPresident,
@@ -76,8 +76,7 @@ namespace Benday.Presidents.WebUi
                                       new EditPresidentRequirement()));
             });
 
-            services.AddSingleton<IAuthorizationHandler, EditPresidentHandler>();
-            */
+            services.AddSingleton<IAuthorizationHandler, EditPresidentHandler>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

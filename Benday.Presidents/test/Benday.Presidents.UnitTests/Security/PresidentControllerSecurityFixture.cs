@@ -53,6 +53,7 @@ namespace Benday.Presidents.UnitTests.Security
             );
         }
 
+/*
         [TestMethod]
         public void ControllerRequiresAdministratorRole()
         {
@@ -60,6 +61,7 @@ namespace Benday.Presidents.UnitTests.Security
                 SecurityConstants.RoleName_Admin, SystemUnderTest
             );
         }
+*/
 
         [TestMethod]
         public void IndexMethodAllowsAnonymous()
