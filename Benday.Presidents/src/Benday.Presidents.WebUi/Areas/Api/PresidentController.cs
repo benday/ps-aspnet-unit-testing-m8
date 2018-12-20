@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Benday.Presidents.WebUi.Areas.Api
 {
     [Route("api/[controller]")]
-    public class PresidentController : Controller
+    public class PresidentController : ControllerBase
     {
         private IPresidentService _Service;
 
