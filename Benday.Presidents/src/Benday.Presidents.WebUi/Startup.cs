@@ -67,7 +67,12 @@ namespace Benday.Presidents.WebUi
             RegisterTypes(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            
+            /*
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddXmlSerializerFormatters();
+            */
             
             services.AddAuthorization(options =>
             {
