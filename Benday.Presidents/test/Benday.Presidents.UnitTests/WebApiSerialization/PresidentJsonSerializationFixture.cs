@@ -1,5 +1,10 @@
+using System;
+using System.IO;
+using System.Text;
+using Benday.Presidents.Api.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace Benday.Presidents.UnitTests.WebApiSerialization
@@ -18,19 +23,8 @@ namespace Benday.Presidents.UnitTests.WebApiSerialization
         {
             get
             {
-                if (_SystemUnderTest == null)
-                {
-                    var contractResolver = new DefaultContractResolver
-                    {
-                        NamingStrategy = new CamelCaseNamingStrategy
-                        {
-                            OverrideSpecifiedNames = false
-                        }
-                    };
-
-                    _SystemUnderTest = new JsonSerializer();
-                    _SystemUnderTest.ContractResolver = contractResolver;
-                }
+                Assert.IsNotNull(_SystemUnderTest, 
+                    "Initialize hasn't been called.");
 
                 return _SystemUnderTest;
             }
