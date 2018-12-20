@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 
 namespace Benday.Presidents.MvcIntegrationTests
 {
@@ -137,7 +138,46 @@ namespace Benday.Presidents.MvcIntegrationTests
             Assert.AreNotEqual<string>(String.Empty, responseBody,
                 "Response body should not be empty.");
         }
-        
+
+        [TestMethod]
+        public async Task GetAllPresidents_TermDoesNotHaveIsDeleted()
+        {
+            // arrange
+            var client = SystemUnderTest.CreateDefaultClient();
+            var expectedContentType = "application/json";
+
+            client.DefaultRequestHeaders.Accept
+                .Add(new MediaTypeWithQualityHeaderValue(
+                    expectedContentType
+                ));
+
+            // act
+            var response =
+                await client.GetAsync(
+                    "/api/president"
+                );
+
+            // assert
+            var responseBody =
+                await response.Content.ReadAsStringAsync();
+
+            Assert.AreNotEqual<string>(String.Empty, responseBody,
+                "Response body should not be empty.");
+
+            var presidentAsJson = JArray.Parse(responseBody)[0];
+
+            var terms = presidentAsJson["terms"] as JArray;
+
+            Assert.IsNotNull(terms, "Terms was null.");
+            Assert.AreEqual<int>(1, terms.Count, "Unexpected term count.");
+
+            var term = terms[0];
+
+            var isDeleted = term["isDeleted"];
+
+            Assert.IsNull(isDeleted, "IsDeleted property should not exist.");
+        }
+
         private T GetInstanceOf<T>()
         {
             var client = SystemUnderTest.CreateDefaultClient();

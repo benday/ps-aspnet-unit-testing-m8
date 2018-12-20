@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Benday.Presidents.Api.Models
 {
@@ -15,6 +16,7 @@ namespace Benday.Presidents.Api.Models
 
         public int Id { get; set; }
 
+        [JsonIgnore]
         public bool IsDeleted { get; set; }
 
         [Required]
